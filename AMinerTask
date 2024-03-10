@@ -1,0 +1,31 @@
+package AssociativeArraysExercise;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class AMinerTask {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        Map<String,Integer> resourceList = new LinkedHashMap<>();
+
+        String input = scan.nextLine();
+        while (!input.equals("stop")){
+            int quantity = Integer.parseInt(scan.nextLine());
+
+            if (resourceList.containsKey(input)){
+                int value = resourceList.get(input);
+                resourceList.put(input,quantity + value);
+            }else {
+                resourceList.put(input,quantity);
+            }
+
+            input = scan.nextLine();
+        }
+        for (Map.Entry<String,Integer> entry:resourceList.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+
+    }
+}
